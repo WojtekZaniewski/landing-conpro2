@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ConPro | Windykacja należności B2B</title>
+    <meta
+      name="description"
+      content="Odzyskaj swoje pieniądze i sprawdź możliwość natychmiastowego zajęcia konta dłużnika. Wypełnij formularz, a specjalista ConPro oddzwoni w ciągu 24h."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="bg-orb orb-left"></div>
+    <div class="bg-orb orb-right"></div>
+
+    <div class="newsletter-modal" id="newsletter-modal" aria-hidden="true">
+      <div class="newsletter-backdrop" data-close-newsletter></div>
+      <div class="newsletter-card" role="dialog" aria-modal="true" aria-labelledby="newsletter-title">
+        <button
+          type="button"
+          class="newsletter-close"
+          id="newsletter-close"
+          aria-label="Zamknij okno"
+        >
+          ×
+        </button>
+        <p class="newsletter-kicker">Dla firm i przedsiębiorców</p>
+        <h2 id="newsletter-title">
+          Podaj swój e-mail i odbierz konkretną checklistę działań, które pomogą szybciej odzyskać
+          zaległe należności od dłużnika.
+        </h2>
+        <p class="newsletter-text">
+          Wyślemy Ci praktyczne wskazówki do pierwszych kroków windykacyjnych. Bez spamu.
+        </p>
+        <form id="newsletter-form" novalidate>
+          <label class="newsletter-field">
+            <span>Twój adres e-mail</span>
+            <input
+              type="email"
+              name="newsletterEmail"
+              id="newsletter-email"
+              autocomplete="email"
+              required
+              placeholder="np. biuro@twojafirma.pl"
+            />
+          </label>
+          <button type="submit" class="newsletter-btn">Wyślij i odbierz checklistę</button>
+          <button type="button" class="newsletter-skip" data-close-newsletter>Pomiń</button>
+          <p class="newsletter-status" id="newsletter-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+
+    <div class="redirect-screen" id="redirect-screen" aria-hidden="true">
+      <div class="redirect-card" role="status" aria-live="polite">
+        <div class="redirect-spinner" aria-hidden="true"></div>
+        <h2>Dziękujemy za zgłoszenie.</h2>
+        <p>
+          Przekierowujemy Cię na stronę rezerwacji rozmowy, gdzie wybierzesz
+          najwygodniejszy termin kontaktu.
+        </p>
+      </div>
+    </div>
+
+    <main class="page-shell">
+      <section class="hero">
+        <div class="brand">
+          <h1 class="brand-logo">con<span class="brand-dot">.</span>pro</h1>
+          <p class="brand-tagline">growing your business</p>
+        </div>
+
+        <div class="hero-copy">
+          <h2>Natychmiastowe zajęcie konta dłużnika i skuteczna windykacja B2B.</h2>
+          <p>
+            Działamy od pierwszego dnia. Wypełnij formularz, a nasz specjalista
+            przedstawi plan działania dla Twojej sprawy.
+          </p>
+          <ul class="hero-points">
+            <li>Wsparcie dla firm i przedsiębiorców</li>
+            <li>Wstępna kwalifikacja sprawy online</li>
+            <li>Kontakt telefoniczny do 24h</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="form-card-wrap">
+        <div class="form-card">
+          <header class="form-head">
+            <h3>Odzyskaj swoje pieniądze</h3>
+            <p>Wypełnij formularz - przedstawimy plan działania w 24h.</p>
+          </header>
+
+          <form id="lead-form" novalidate>
+            <input type="hidden" name="campaign_name" value="Meta Ads - Kampania 1 - Windykacja" />
+            <input type="hidden" name="utm_source" id="utm_source" />
+            <input type="hidden" name="utm_medium" id="utm_medium" />
+            <input type="hidden" name="utm_campaign" id="utm_campaign" />
+            <input type="hidden" name="utm_content" id="utm_content" />
+
+            <div class="grid">
+              <label class="field">
+                <span>Imię i nazwisko</span>
+                <input type="text" name="fullName" autocomplete="name" required />
+              </label>
+
+              <label class="field">
+                <span>Numer telefonu</span>
+                <input type="tel" name="phone" autocomplete="tel" required />
+              </label>
+
+              <label class="field">
+                <span>Adres e-mail</span>
+                <input type="email" name="email" autocomplete="email" required />
+              </label>
+
+              <label class="field">
+                <span>Nazwa Twojej firmy</span>
+                <input type="text" name="companyName" autocomplete="organization" required />
+              </label>
+
+              <label class="field">
+                <span>Kwota zaległości</span>
+                <select name="debtAmount" required>
+                  <option value="">Wybierz opcję</option>
+                  <option>Do 10 000 zł</option>
+                  <option>10 000-50 000 zł</option>
+                  <option>50 000-200 000 zł</option>
+                  <option>Powyżej 200 000 zł</option>
+                </select>
+              </label>
+
+              <label class="field">
+                <span>Czy posiadasz fakturę / umowę?</span>
+                <select name="documentsStatus" required>
+                  <option value="">Wybierz opcję</option>
+                  <option>Tak, faktura z terminem płatności</option>
+                  <option>Tak, umowa pisemna</option>
+                  <option>Tak, oba dokumenty</option>
+                  <option>Nie, tylko ustalenia ustne</option>
+                </select>
+              </label>
+
+              <label class="field">
+                <span>Jak długo trwa zaległość?</span>
+                <select name="debtDuration" required>
+                  <option value="">Wybierz opcję</option>
+                  <option>Do 30 dni</option>
+                  <option>30-90 dni</option>
+                  <option>3-6 mies.</option>
+                  <option>Ponad 6 mies.</option>
+                </select>
+              </label>
+
+              <label class="field">
+                <span>Branża dłużnika (opcjonalnie)</span>
+                <select name="debtorIndustry">
+                  <option value="">Wybierz opcję</option>
+                  <option>Budownictwo</option>
+                  <option>Transport</option>
+                  <option>Usługi</option>
+                  <option>Handel</option>
+                  <option>Produkcja</option>
+                  <option>Inna</option>
+                </select>
+              </label>
+
+              <label class="field">
+                <span>Czy próbowałeś już odzyskać środki? (opcjonalnie)</span>
+                <select name="recoveryAttempt">
+                  <option value="">Wybierz opcję</option>
+                  <option>Nie</option>
+                  <option>Tak, sam/a</option>
+                  <option>Tak, inna firma windykacyjna</option>
+                  <option>Tak, sądownie</option>
+                </select>
+              </label>
+            </div>
+
+            <label class="consent">
+              <input type="checkbox" name="rodoConsent" required />
+              <span>
+                Wyrażam zgodę na przetwarzanie moich danych osobowych w celu
+                kontaktu ws. windykacji należności.
+              </span>
+            </label>
+
+            <p class="form-note">
+              Po wysłaniu formularza dostaniesz możliwość rezerwacji terminu rozmowy w Calendly.
+            </p>
+
+            <button type="submit" class="submit-btn">Wyślij formularz</button>
+            <p class="status" id="form-status" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>© 2026 ConPro</p>
+      <nav>
+        <a href="https://conpro.pl/dzialy.html#polityka" target="_blank" rel="noreferrer">Polityka prywatności</a>
+        <a href="https://conpro.pl/dzialy.html#regulamin" target="_blank" rel="noreferrer">Regulamin</a>
+        <a href="https://conpro.pl/dzialy.html#kontakt" target="_blank" rel="noreferrer">Kontakt</a>
+      </nav>
+    </footer>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
